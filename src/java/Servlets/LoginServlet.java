@@ -13,6 +13,8 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getParameter("logout") != null){
+            //used to clear the session
+            request.getSession().invalidate();
             request.setAttribute("message", "Session has been logged out");
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response); 
         }
